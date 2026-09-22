@@ -1,7 +1,10 @@
-# Trabalho A3 - Banco-de-Dados
+# Trabalho A3 - Banco de Dados
+
 Disciplina: Banco de Dados
+
 Professor: Osmar de Oliveira Braz Júnior
 
-Integrantes:
+
+**Integrantes**:
 - Arthur Kroth Posselt
 - Nícolas Gaia Negrão
