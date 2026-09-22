@@ -7,4 +7,4 @@ Professor: Osmar de Oliveira Braz Júnior
 
 **Integrantes**:
 - Arthur Kroth Posselt - RA: 10725115044
-- Nícolas Gaia Negrão
+- Nícolas Gaia Negrão - RA: 1072517389
