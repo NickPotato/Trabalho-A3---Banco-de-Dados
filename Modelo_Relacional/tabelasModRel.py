@@ -11,10 +11,10 @@ tables = [ # clump everything together into one list
         "PESSOA_EMAIL*": ["idPessoa(PK, FK)", "email(PK)"]
     },
     Aluno := {
-        "ALUNO": ["idPessoa(PK, FK)", "numero_matricula", "data_ingresso", "situacao_cadastro", "objetivo_principal"]
+        "ALUNO": ["idPessoa(PK, FK)", "data_ingresso", "situacao_cadastro", "objetivo_principal"]
     },
     Funcionario := {
-        "FUNCIONARIO": ["idPessoa(PK, FK)", "numero_funcionario", "data_contratacao", "cargo", "salario", "horario_trabalho"]
+        "FUNCIONARIO": ["idPessoa(PK, FK)", "data_contratacao", "cargo", "salario"]
     },
     Professor := {
         "PROFESSOR": ["idPessoa(PK, FK)", "cref", "especialidade", "nivel_experiencia"]
@@ -43,8 +43,8 @@ tables = [ # clump everything together into one list
     Aula := {
         "AULA": ["idAula(PK)", "idModalidade(FK)", "idPessoa_Professor(FK)", "data", "hora_inicio", "hora_fim", "capacidade_maxima", "local"]
     },
-    AlunoAula := {
-        "ALUNO_AULA": ["idPessoa_Aluno(PK, FK)", "idAula(PK, FK)", "presenca", "data_registro"]
+    PartAula := { # previously AlunoAula, js changed it to match the excel version's
+        "PARTICIPACAO_AULA": ["idPessoa_Aluno(PK, FK)", "idAula(PK, FK)", "presenca", "data_registro"]
     },
     Programa := {
         "PROGRAMA_TREINAMENTO": ["idPrograma(PK)", "idPessoa_Aluno(FK)", "idPessoa_Professor(FK)", "objetivo", "data_criacao", "data_validade", "observacoes"]
