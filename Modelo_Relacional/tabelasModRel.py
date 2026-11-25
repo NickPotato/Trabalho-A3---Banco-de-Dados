@@ -1,7 +1,7 @@
-﻿from tabulate import tabulate # library that formats the lists/tables for me
+﻿from tabulate import tabulate # biblioteca que formata as lists/tuples 
 
-tables = [ # clump everything together into one list 
-    Pessoa := { # each table has one header (the key name) and values
+tables = [ # juntar todas as tabelas em uma list
+    Pessoa := { # cada tabela tem um header (o nome da key) e valores
         "PESSOA": ["idPessoa(PK)", "nome", "cpf", "rg", "sexo", "data_nascimento", "rua", "numero", "bairro", "cidade", "uf"]
     },
     PessoaTelefone := {
@@ -25,7 +25,7 @@ tables = [ # clump everything together into one list
     Plano := {
         "PLANO": ["idPlano(PK)", "nome", "descricao", "duracao", "valor", "modalidade_acesso"]
     },
-    Matricula := { # am I even allowed to refer to pessoa subcategories like this? pessoa_aluno...?
+    Matricula := {
         "MATRICULA": ["idMatricula(PK)", "idPessoa_Aluno(FK)", "idPlano(FK)", "data_inicio", "data_fim", "status", "valor_contratado"] 
     },
     Pagamento := {
@@ -43,7 +43,7 @@ tables = [ # clump everything together into one list
     Aula := {
         "AULA": ["idAula(PK)", "idModalidade(FK)", "idPessoa_Professor(FK)", "data", "hora_inicio", "hora_fim", "capacidade_maxima", "local"]
     },
-    PartAula := { # previously AlunoAula, js changed it to match the excel version's
+    PartAula := {
         "PARTICIPACAO_AULA": ["idPessoa_Aluno(PK, FK)", "idAula(PK, FK)", "presenca", "data_registro"]
     },
     Programa := {
@@ -57,7 +57,7 @@ tables = [ # clump everything together into one list
     }
 ]
 
-for table in tables: # go through every table individually and print each of em out with tabulate
+for table in tables: # iterar e usar tabulate sob todas as tabelas individualmente, printando o resultado de cada uma
     print(tabulate(table, headers="keys", tablefmt="simple_outline"))
     
-# im running this in cmd prompt and putting the results in firealpaca so I can edit them together there
+# executando isso no terminal e usando firealpaca para editar os resultados

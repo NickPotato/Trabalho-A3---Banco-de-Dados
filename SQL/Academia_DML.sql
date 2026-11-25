@@ -1,12 +1,11 @@
 -- Script SQL DML - Banco de dados Academia 
 
--- data manipulationnnnn
+-- usar database correto
 USE db_academia;
 
--- filling up the database with placeholder data using INSERT INTO
+-- populando a database com informação fictícia usando INSERT INTO
 
 -- pessoa 
--- teacher taught us to do one line at a time but doing it like this looks a little cleaner, so
 INSERT INTO PESSOA(idPessoa, nome, cpf, rg, sexo, data_nascimento, rua, numero, bairro, cidade, uf) VALUES
 (1, "João Felipe Cardoso", 11122233344, 1234567, "M", "1998-02-02", "Rua Pedra Lisa", 100, "Centro", "Florianópolis", "SC"),
 (2, "Monica Costa da Silva", 11122233345, 1234568, "F", "2000-03-03", "Rua Grama Seca", 22, "Centro", "Florianópolis", "SC"),
@@ -16,7 +15,6 @@ INSERT INTO PESSOA(idPessoa, nome, cpf, rg, sexo, data_nascimento, rua, numero, 
 (6, "Sarah Ferreira Lima", 11122233349, 1234562, "F", "2005-04-03", "Rua Castelo Branco", 109, "Coqueiros", "Florianópolis", "SC");
 
 -- pessoa email
--- exists cause one person can have multiple emails, though that's not the case here
 INSERT INTO PESSOA_EMAIL(idPessoa, email) VALUES
 (1, "jaofelps@gmail.com"),
 (2, "monicacosta@gmail.com"),
@@ -33,11 +31,11 @@ INSERT INTO PESSOA_TELEFONE(idPessoa, telefone) VALUES
 (4, 01234567893),
 (5, 01234567894),
 (6, 01234567895),
-(6, 01234567896);
+(6, 01234567896); -- pessoa 6 tem 2 telefones 
 
 -- aluno
 INSERT INTO ALUNO(idPessoa, data_ingresso, objetivo_principal, situacao_cadastro) VALUES
-(1, "2026-02-10", "Ganho de massa muscular", "Ativo"), -- default is "ativo" but I gotta set it anyway
+(1, "2026-02-10", "Ganho de massa muscular", "Ativo"), -- padrão é "ativo"
 (2, "2026-05-03", "Emagrecimento", "Ativo"),
 (3, "2026-07-12", "Condicionamento Físico", "Ativo");
 
@@ -109,8 +107,7 @@ INSERT INTO MODALIDADE(idModalidade, nome, duracao_media, intensidade, descricao
 INSERT INTO PROFESSOR_MODALIDADE(idPessoaProfessor, idModalidade) VALUES 
 (4, 1),
 (4, 3), 
-(5, 2); -- id 5 is pilates girl
--- this one was easy, nice
+(5, 2); -- id 5 = professora de pilates
 
 -- aula
 INSERT INTO AULA(idAula, idModalidade, idPessoaProfessor, data, hora_inicio, hora_fim, local, capacidade_maxima) VALUES
@@ -121,15 +118,14 @@ INSERT INTO AULA(idAula, idModalidade, idPessoaProfessor, data, hora_inicio, hor
 INSERT INTO PARTICIPACAO_AULA(idPessoaAluno, idAula, presenca, data_registro) VALUES
 (1, 1, TRUE, "2026-05-10"),
 (2, 2, TRUE, "2026-05-10");
--- that's all 18 done
+-- todas as 18 tabelas feitas
 
--- we're required to use UPDATE/DELETE as well so here's the last section with those: 
--- updating data 
+-- seção obrigatória de utilização de UPDATE e DELETE 
+-- atualizando dados
 UPDATE FUNCIONARIO 
-SET salario = salario * 1.05 -- readjusting teacher salary by 5%
+SET salario = salario * 1.05 -- reajustando o salário dos professores em 5%
 WHERE cargo LIKE "Professor%";
 
--- deleting data
+-- excluindo dados
 DELETE FROM PESSOA_TELEFONE
-WHERE idPessoa = 6 AND telefone = 01234567896; -- getting rid of the extra phone number for the last employee
--- i accidentally checked for a string instead of an int the first time i was doing this lmao
+WHERE idPessoa = 6 AND telefone = 01234567896; -- removendo o telefone extra do último funcionário

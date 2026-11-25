@@ -1,11 +1,12 @@
 -- Script SQL DQL - Banco de dados Academia 
 
--- data query/search
+-- usar database correto
 USE db_academia;
 
--- getting reports using SELECT and JOIN
+-- pesquisa/depuração de informações
+-- gerando relatórios usando SELECT e JOIN
 
--- student and plan info
+-- informação e plano do aluno
 SELECT 
     a.idPessoa AS id_aluno,
     p.nome AS nome_aluno,
@@ -20,7 +21,7 @@ JOIN PLANO pl ON m.idPlano = pl.idPlano
 WHERE m.status = 'Ativa'
 ORDER BY p.nome;
 
--- financial report with payments
+-- relatório financeiro com pagamentos
 SELECT 
     p.nome AS nome_aluno,
     pg.valor,
@@ -34,7 +35,7 @@ JOIN PESSOA p ON a.idPessoa = p.idPessoa
 WHERE pg.status = 'Pago'
 ORDER BY pg.data_pagamento DESC;
 
--- student workout plan
+-- plano de treino dos alunos
 SELECT 
     p_aluno.nome AS aluno,
     p_prof.nome AS professor_responsavel,
@@ -51,7 +52,7 @@ JOIN PESSOA p_prof ON pt.idPessoaProfessor = p_prof.idPessoa
 JOIN PROGRAMA_EXERCICIO pe ON pt.idPrograma = pe.idPrograma
 JOIN EXERCICIO e ON pe.idExercicio = e.idExercicio;
 
--- teacher info and their allowed areas
+-- informação dos professores e suas áreas de atuação
 SELECT 
     p.nome AS nome_professor,
     pr.cref,
@@ -64,7 +65,7 @@ JOIN PROFESSOR_MODALIDADE pm ON pr.idPessoa = pm.idPessoaProfessor
 JOIN MODALIDADE m ON pm.idModalidade = m.idModalidade
 ORDER BY p.nome;
 
--- students' physical evaluations (+the evaluator)
+-- avaliação física dos alunos (+ o avaliado)
 SELECT 
     p_aluno.nome AS aluno,
     p_func.nome AS avaliador,
